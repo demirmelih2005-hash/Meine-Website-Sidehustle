@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fragebogen für Ihre Website</title>
+<meta name="robots" content="noindex">
+<style>
+:root {
+  /* Layout: ein Schritt pro Bildschirm, Fortschritt oben, Aktionen unten; Handy zuerst */
+  --bg: #f4f2ef;
+  --card: #ffffff;
+  --ink: #16181d;
+  --muted: #5f6672;
+  --line: #e3dfd9;
+  --accent: #c81e28;
+  --accent-soft: #fbe9ea;
+  --ok: #1f8a4c;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.5 var(--font); -webkit-font-smoothing: antialiased; }
+.top { position: sticky; top: 0; z-index: 5; background: rgba(244,242,239,.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.top-inner { max-width: 720px; margin: 0 auto; padding: 14px 18px 12px; display: grid; gap: 10px; }
+.brand { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; }
+.brand b { font-size: 15px; }
+.brand span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .35s ease; }
+main { max-width: 720px; margin: 0 auto; padding: 22px 18px 120px; }
+.step { display: none; }
+.step.active { display: block; animation: in .3s ease; }
+@keyframes in { from { opacity: .3; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.eyebrow { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 6px; }
+h1, h2 { margin: 0 0 8px; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: clamp(28px, 6vw, 38px); }
+h2 { font-size: clamp(24px, 5vw, 30px); }
+.lead { color: var(--muted); margin: 0 0 22px; max-width: 60ch; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-bottom: 14px; }
+.card > h3 { margin: 0 0 12px; font-size: 17px; }
+.field { display: grid; gap: 6px; margin-bottom: 14px; }
+.field:last-child { margin-bottom: 0; }
+label, .label { font-weight: 600; font-size: 15px; }
+.hint { color: var(--muted); font-size: 13px; font-weight: 400; }
+input[type=text], input[type=email], input[type=tel], input[type=url], input[type=time], input[type=number], select, textarea {
+  width: 100%; font: inherit; color: var(--ink); background: #fff; border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 13px; transition: border-color .15s, box-shadow .15s;
+}
+textarea { min-height: 96px; resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .grid2 { grid-template-columns: 1fr; } }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; }
+.chip span { display: inline-block; padding: 9px 14px; border: 1.5px solid var(--line); border-radius: 99px; background: #fff; font-size: 15px; cursor: pointer; transition: all .15s; user-select: none; }
+.chip input:checked + span { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip input:focus-visible + span { box-shadow: 0 0 0 4px var(--accent-soft); }
+.hours { display: grid; gap: 8px; }
+.hrow { display: grid; grid-template-columns: 92px auto 1fr 1fr; gap: 8px; align-items: center; }
+.hrow .day { font-weight: 600; }
+.hrow input[type=time] { padding: 9px 8px; }
+.hrow.closed input[type=time] { opacity: .35; }
+.toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); white-space: nowrap; }
+@media (max-width: 420px) { .hrow { grid-template-columns: 1fr 1fr; } .hrow .day { grid-column: 1; } .hrow .toggle { grid-column: 2; justify-self: end; } }
+.rows { display: grid; gap: 10px; }
+.lrow { display: grid; grid-template-columns: 1fr 110px 100px 40px; gap: 8px; align-items: center; }
+.lrow.team { grid-template-columns: 1fr 1fr 40px; }
+@media (max-width: 560px) { .lrow { grid-template-columns: 1fr 1fr 40px; padding-bottom: 10px; border-bottom: 1px solid var(--line); } .lrow input:first-child { grid-column: 1 / -1; } .lrow.team { border-bottom: 0; padding-bottom: 0; } .lrow.team input:first-child { grid-column: auto; } .lrow.head { display: none; } }
+.del { width: 40px; height: 44px; border: 1.5px solid var(--line); background: #fff; border-radius: 12px; cursor: pointer; font-size: 18px; color: var(--muted); }
+.add { margin-top: 10px; background: none; border: 1.5px dashed #c9c3ba; border-radius: 12px; padding: 11px 14px; width: 100%; font: 600 15px var(--font); color: var(--ink); cursor: pointer; }
+.add:hover, .del:hover { border-color: var(--accent); color: var(--accent); }
+.colors { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.colors label { display: grid; justify-items: center; gap: 4px; font-size: 13px; font-weight: 500; color: var(--muted); }
+input[type=color] { width: 56px; height: 56px; border: 1.5px solid var(--line); border-radius: 14px; padding: 4px; background: #fff; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; }
+.check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent); flex: none; }
+.nav { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,.96); border-top: 1px solid var(--line); backdrop-filter: blur(6px); }
+.nav-inner { max-width: 720px; margin: 0 auto; padding: 12px 18px calc(12px + env(safe-area-inset-bottom)); display: flex; gap: 10px; }
+.btn { flex: 1; font: 700 16px var(--font); padding: 14px 18px; border-radius: 14px; border: 1.5px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer; transition: transform .1s; }
+.btn:active { transform: scale(.98); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.wa { background: #1f8a4c; border-color: #1f8a4c; color: #fff; }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.welcome-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.welcome-list li { display: flex; gap: 12px; align-items: flex-start; }
+.welcome-list b.n { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-size: 14px; }
+.summary { white-space: pre-wrap; font: 14px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; background: #fbfaf8; border: 1px solid var(--line); border-radius: 14px; padding: 14px; max-height: 420px; overflow: auto; }
+.done { display: none; text-align: center; padding: 30px 10px; }
+.done.show { display: block; }
+.big-ok { width: 72px; height: 72px; border-radius: 50%; background: #e3f4ea; color: var(--ok); display: grid; place-items: center; font-size: 36px; margin: 0 auto 14px; }
+.error { color: var(--accent); font-size: 14px; font-weight: 600; margin-top: 6px; display: none; }
+.error.show { display: block; }
+.actions { display: grid; gap: 10px; margin-top: 12px; }
+footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px 18px 20px; }
+@media (prefers-reduced-motion: reduce) { .step.active { animation: none; } .bar i { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-inner">
+    <div class="brand"><b id="anbieter"></b><span id="stepCount">Schritt 1 von 9</span></div>
+    <div class="bar" aria-hidden="true"><i id="progress"></i></div>
+  </div>
+</div>
+
+<main>
+<form id="form" novalidate>
+
+  <!-- 1 Start -->
+  <section class="step active" data-title="Start">
+    <p class="eyebrow">Ihre neue Website</p>
+    <h1>Erzählen Sie uns von Ihrem Betrieb.</h1>
+    <p class="lead">Mit Ihren Antworten bauen wir eine Website, die wirklich zu Ihnen passt. Das dauert etwa 10 Minuten. Ihre Eingaben werden auf diesem Gerät zwischengespeichert, Sie können also jederzeit pausieren.</p>
+    <div class="card">
+      <ul class="welcome-list">
+        <li><b class="n">1</b><span>Sie füllen diesen Fragebogen aus. Was Sie nicht wissen, lassen Sie einfach leer.</span></li>
+        <li><b class="n">2</b><span>Am Ende schicken Sie uns die Antworten per WhatsApp oder kopieren sie.</span></li>
+        <li><b class="n">3</b><span>Innerhalb weniger Tage bekommen Sie einen ersten Entwurf zum Ansehen.</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Wofür interessieren Sie sich?</h3>
+      <div class="chips" data-group="pakete">
+        <label class="chip"><input type="checkbox" name="pakete" value="Website"><span>Website</span></label>
+        <label class="chip"><input type="checkbox" name="pakete" value="Google-Unternehmensprofil"><span>Google-Unternehmensprofil</span></label>
+        <label class="chip"><input type="checkbox" name="pakete" value="Pflege der Website"><span>Laufende Pflege</span></label>
+        <label class="chip"><input type="checkbox" name="pakete" value="Noch unsicher"><span>Noch unsicher</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 Betrieb -->
+  <section class="step" data-title="Ihr Betrieb">
+    <p class="eyebrow">Schritt 2</p>
+    <h2>Ihr Betrieb</h2>
+    <p class="lead">Die Grunddaten, die auf der Website stehen sollen.</p>
+    <div class="card">
+      <div class="field"><label for="name">Name des Betriebs *</label><input type="text" id="name" name="name" autocomplete="organization" required></div>
+      <div class="grid2">
+        <div class="field"><label for="branche">Branche</label>
+          <select id="branche" name="branche"><option value="">Bitte wählen</option><option>Barbershop / Friseur</option><option>Kosmetik / Nagelstudio</option><option>Café / Restaurant</option><option>Handwerk</option><option>Einzelhandel</option><option>Andere</option></select></div>
+        <div class="field"><label for="seit">Gegründet / seit</label><input type="text" id="seit" name="seit" placeholder="z. B. 2019"></div>
+      </div>
+      <div class="field"><label for="ansprechpartner">Ansprechpartner/in</label><input type="text" id="ansprechpartner" name="ansprechpartner" autocomplete="name"></div>
+      <div class="field"><label for="strasse">Straße und Hausnummer</label><input type="text" id="strasse" name="strasse" autocomplete="street-address"></div>
+      <div class="grid2">
+        <div class="field"><label for="plz">PLZ</label><input type="text" id="plz" name="plz" inputmode="numeric" autocomplete="postal-code"></div>
+        <div class="field"><label for="ort">Ort / Stadtteil</label><input type="text" id="ort" name="ort" placeholder="z. B. Köln-Nippes"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>So erreicht man Sie</h3>
+      <div class="grid2">
+        <div class="field"><label for="telefon">Telefon</label><input type="tel" id="telefon" name="telefon" autocomplete="tel"></div>
+        <div class="field"><label for="whatsapp">WhatsApp für Kunden</label><input type="tel" id="whatsapp" name="whatsapp"></div>
+      </div>
+      <div class="field"><label for="email">E-Mail</label><input type="email" id="email" name="email" autocomplete="email"></div>
+      <div class="grid2">
+        <div class="field"><label for="instagram">Instagram</label><input type="text" id="instagram" name="instagram" placeholder="@ihrbetrieb"></div>
+        <div class="field"><label for="facebook">Facebook / TikTok</label><input type="text" id="facebook" name="facebook"></div>
+      </div>
+      <div class="field"><label for="google">Link zu Ihrem Google-Profil <span class="hint">(falls vorhanden)</span></label><input type="url" id="google" name="google"></div>
+      <div class="field"><label for="altseite">Bisherige Website <span class="hint">(falls vorhanden)</span></label><input type="url" id="altseite" name="altseite"></div>
+    </div>
+  </section>
+
+  <!-- 3 Öffnungszeiten -->
+  <section class="step" data-title="Öffnungszeiten">
+    <p class="eyebrow">Schritt 3</p>
+    <h2>Öffnungszeiten</h2>
+    <p class="lead">Die Website zeigt später automatisch an, ob Sie gerade geöffnet haben.</p>
+    <div class="card"><div class="hours" id="hours"></div></div>
+    <div class="card">
+      <div class="field"><label for="zeitenHinweis">Besonderheiten</label><textarea id="zeitenHinweis" name="zeitenHinweis" placeholder="z. B. Mittagspause 13–14 Uhr, Termine nur nach Vereinbarung, Betriebsferien im August"></textarea></div>
+    </div>
+  </section>
+
+  <!-- 4 Leistungen -->
+  <section class="step" data-title="Leistungen und Preise">
+    <p class="eyebrow">Schritt 4</p>
+    <h2>Leistungen und Preise</h2>
+    <p class="lead">Was bieten Sie an? Je genauer, desto besser findet man Sie bei Google.</p>
+    <div class="card">
+      <div class="lrow head" aria-hidden="true" style="font-size:13px;color:var(--muted);font-weight:600"><span>Leistung</span><span>Dauer</span><span>Preis</span><span></span></div>
+      <div class="rows" id="leistungen"></div>
+      <button type="button" class="add" data-add="leistungen">+ Leistung hinzufügen</button>
+    </div>
+    <div class="card">
+      <div class="field"><span class="label">Sollen die Preise auf der Website stehen?</span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="preiseZeigen" value="Ja, alle"><span>Ja, alle</span></label>
+          <label class="chip"><input type="radio" name="preiseZeigen" value="Nur ab-Preise"><span>Nur „ab“-Preise</span></label>
+          <label class="chip"><input type="radio" name="preiseZeigen" value="Nein"><span>Nein</span></label>
+        </div></div>
+      <div class="field"><span class="label">Zahlungsarten</span>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="zahlung" value="Bar"><span>Bar</span></label>
+          <label class="chip"><input type="checkbox" name="zahlung" value="EC-Karte"><span>EC-Karte</span></label>
+          <label class="chip"><input type="checkbox" name="zahlung" value="Kreditkarte"><span>Kreditkarte</span></label>
+          <label class="chip"><input type="checkbox" name="zahlung" value="Apple / Google Pay"><span>Apple / Google Pay</span></label>
+          <label class="chip"><input type="checkbox" name="zahlung" value="PayPal"><span>PayPal</span></label>
+        </div></div>
+    </div>
+  </section>
+
+  <!-- 5 Über Sie -->
+  <section class="step" data-title="Über Sie">
+    <p class="eyebrow">Schritt 5</p>
+    <h2>Was macht Sie besonders?</h2>
+    <p class="lead">Hier entsteht der Text, der Kunden überzeugt. Schreiben Sie ruhig in Stichpunkten, wir formulieren das schön aus.</p>
+    <div class="card">
+      <div class="field"><label for="beschreibung">Beschreiben Sie Ihren Betrieb in 2–3 Sätzen</label><textarea id="beschreibung" name="beschreibung" placeholder="Wer sind Sie, was machen Sie, wie ist die Stimmung bei Ihnen?"></textarea></div>
+      <div class="field"><label for="besonders">Warum kommen Kunden zu Ihnen und nicht zur Konkurrenz?</label><textarea id="besonders" name="besonders" placeholder="z. B. keine Wartezeit, 20 Jahre Erfahrung, besonders kinderfreundlich, eigene Kaffeebohnen"></textarea></div>
+      <div class="field"><label for="geschichte">Gibt es eine Geschichte hinter dem Betrieb? <span class="hint">(optional)</span></label><textarea id="geschichte" name="geschichte"></textarea></div>
+    </div>
+    <div class="card">
+      <h3>Wer sind Ihre Kunden?</h3>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="zielgruppe" value="Junge Leute"><span>Junge Leute</span></label>
+        <label class="chip"><input type="checkbox" name="zielgruppe" value="Familien"><span>Familien</span></label>
+        <label class="chip"><input type="checkbox" name="zielgruppe" value="Berufstätige"><span>Berufstätige</span></label>
+        <label class="chip"><input type="checkbox" name="zielgruppe" value="Senioren"><span>Senioren</span></label>
+        <label class="chip"><input type="checkbox" name="zielgruppe" value="Stammkunden aus dem Viertel"><span>Stammkunden aus dem Viertel</span></label>
+        <label class="chip"><input type="checkbox" name="zielgruppe" value="Firmenkunden"><span>Firmenkunden</span></label>
+      </div>
+      <div class="field" style="margin-top:14px"><label for="sprachen">Welche Sprachen sprechen Sie im Betrieb?</label><input type="text" id="sprachen" name="sprachen" placeholder="z. B. Deutsch, Türkisch, Englisch"></div>
+    </div>
+    <div class="card">
+      <h3>Team <span class="hint">(optional, nur mit Einverständnis der Personen)</span></h3>
+      <div class="rows" id="team"></div>
+      <button type="button" class="add" data-add="team">+ Person hinzufügen</button>
+    </div>
+  </section>
+
+  <!-- 6 Stil -->
+  <section class="step" data-title="Stil">
+    <p class="eyebrow">Schritt 6</p>
+    <h2>Wie soll Ihre Website wirken?</h2>
+    <p class="lead">Wählen Sie, was zu Ihrem Laden passt. Mehrere Antworten sind möglich.</p>
+    <div class="card">
+      <h3>Stimmung</h3>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="stil" value="Modern"><span>Modern</span></label>
+        <label class="chip"><input type="checkbox" name="stil" value="Edel"><span>Edel</span></label>
+        <label class="chip"><input type="checkbox" name="stil" value="Gemütlich"><span>Gemütlich</span></label>
+        <label class="chip"><input type="checkbox" name="stil" value="Klassisch"><span>Klassisch</span></label>
+        <label class="chip"><input type="checkbox" name="stil" value="Minimalistisch"><span>Minimalistisch</span></label>
+        <label class="chip"><input type="checkbox" name="stil" value="Frech und laut"><span>Frech und laut</span></label>
+        <label class="chip"><input type="checkbox" name="stil" value="Kölsch und lokal"><span>Kölsch und lokal</span></label>
+        <label class="chip"><input type="checkbox" name="stil" value="Hell und freundlich"><span>Hell und freundlich</span></label>
+        <label class="chip"><input type="checkbox" name="stil" value="Dunkel und stylisch"><span>Dunkel und stylisch</span></label>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Farben</h3>
+      <div class="field"><span class="label">Haben Sie schon feste Farben, z. B. im Logo?</span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="farbenVorhanden" value="Ja"><span>Ja</span></label>
+          <label class="chip"><input type="radio" name="farbenVorhanden" value="Nein, bitte vorschlagen"><span>Nein, bitte vorschlagen</span></label>
+        </div></div>
+      <div class="colors">
+        <label>Hauptfarbe<input type="color" name="farbe1" value="#c81e28"></label>
+        <label>Zweite Farbe<input type="color" name="farbe2" value="#16181d"></label>
+        <label>Akzent<input type="color" name="farbe3" value="#f2c14e"></label>
+      </div>
+    </div>
+    <div class="card">
+      <div class="field"><label for="vorbilder">Websites, die Ihnen gefallen <span class="hint">(gern auch von anderen Branchen)</span></label><textarea id="vorbilder" name="vorbilder" placeholder="Links oder Namen, und was Ihnen daran gefällt"></textarea></div>
+      <div class="field"><label for="nogo">Was soll es auf keinen Fall geben?</label><textarea id="nogo" name="nogo" placeholder="z. B. kein Pink, keine Stockfotos, nicht zu verspielt"></textarea></div>
+    </div>
+  </section>
+
+  <!-- 7 Funktionen -->
+  <section class="step" data-title="Funktionen">
+    <p class="eyebrow">Schritt 7</p>
+    <h2>Was soll die Website können?</h2>
+    <div class="card">
+      <h3>Wie sollen Kunden Termine buchen oder bestellen?</h3>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="termin" value="Per WhatsApp"><span>Per WhatsApp</span></label>
+        <label class="chip"><input type="checkbox" name="termin" value="Per Anruf"><span>Per Anruf</span></label>
+        <label class="chip"><input type="checkbox" name="termin" value="Online-Buchungstool"><span>Online-Buchungstool</span></label>
+        <label class="chip"><input type="checkbox" name="termin" value="Ohne Termin, einfach vorbeikommen"><span>Einfach vorbeikommen</span></label>
+      </div>
+      <div class="field" style="margin-top:14px"><label for="buchungstool">Falls Sie schon ein Buchungstool nutzen: welches?</label><input type="text" id="buchungstool" name="buchungstool" placeholder="z. B. Treatwell, Planity, Shore, Calendly"></div>
+    </div>
+    <div class="card">
+      <h3>Was soll auf die Seite?</h3>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="funktionen" value="Preisliste / Speisekarte"><span>Preisliste / Speisekarte</span></label>
+        <label class="chip"><input type="checkbox" name="funktionen" value="Fotogalerie"><span>Fotogalerie</span></label>
+        <label class="chip"><input type="checkbox" name="funktionen" value="Vorher/Nachher"><span>Vorher/Nachher</span></label>
+        <label class="chip"><input type="checkbox" name="funktionen" value="Team vorstellen"><span>Team vorstellen</span></label>
+        <label class="chip"><input type="checkbox" name="funktionen" value="Google-Bewertungen verlinken"><span>Google-Bewertungen verlinken</span></label>
+        <label class="chip"><input type="checkbox" name="funktionen" value="Gutscheine"><span>Gutscheine</span></label>
+        <label class="chip"><input type="checkbox" name="funktionen" value="Stellenangebote"><span>Stellenangebote</span></label>
+        <label class="chip"><input type="checkbox" name="funktionen" value="Häufige Fragen"><span>Häufige Fragen</span></label>
+        <label class="chip"><input type="checkbox" name="funktionen" value="Mehrsprachig"><span>Mehrsprachig</span></label>
+      </div>
+    </div>
+    <div class="card">
+      <div class="field"><label for="domain">Wunsch-Adresse der Website</label><input type="text" id="domain" name="domain" placeholder="z. B. ihr-betrieb-koeln.de"></div>
+      <div class="field"><span class="label">Möchten Sie eine E-Mail-Adresse mit dieser Endung? <span class="hint">(z. B. info@ihr-betrieb.de)</span></span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="mailWunsch" value="Ja"><span>Ja</span></label>
+          <label class="chip"><input type="radio" name="mailWunsch" value="Nein"><span>Nein</span></label>
+          <label class="chip"><input type="radio" name="mailWunsch" value="Habe ich schon"><span>Habe ich schon</span></label>
+        </div></div>
+    </div>
+  </section>
+
+  <!-- 8 Fotos und Rechtliches -->
+  <section class="step" data-title="Fotos und Impressum">
+    <p class="eyebrow">Schritt 8</p>
+    <h2>Fotos und Pflichtangaben</h2>
+    <p class="lead">Gute Fotos machen den größten Unterschied. Die Angaben unten braucht jede geschäftliche Website für das Impressum.</p>
+    <div class="card">
+      <h3>Fotos und Logo</h3>
+      <div class="field"><span class="label">Fotos</span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="fotos" value="Ich habe eigene Fotos"><span>Ich habe eigene Fotos</span></label>
+          <label class="chip"><input type="radio" name="fotos" value="Bitte vor Ort Fotos machen"><span>Bitte vor Ort fotografieren</span></label>
+          <label class="chip"><input type="radio" name="fotos" value="Lizenzfreie Bilder sind okay"><span>Lizenzfreie Bilder sind okay</span></label>
+        </div></div>
+      <div class="field"><span class="label">Logo</span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="logo" value="Vorhanden"><span>Vorhanden</span></label>
+          <label class="chip"><input type="radio" name="logo" value="Nicht vorhanden"><span>Nicht vorhanden</span></label>
+        </div></div>
+      <p class="hint" style="margin:0">Fotos und Logo schicken Sie bitte nach dem Absenden per WhatsApp. Auf Fotos erkennbare Personen müssen mit der Veröffentlichung einverstanden sein.</p>
+    </div>
+    <div class="card">
+      <h3>Angaben für das Impressum</h3>
+      <div class="field"><label for="inhaber">Vollständiger Name der Inhaberin / des Inhabers *</label><input type="text" id="inhaber" name="inhaber" required></div>
+      <div class="grid2">
+        <div class="field"><label for="rechtsform">Rechtsform</label>
+          <select id="rechtsform" name="rechtsform"><option value="">Bitte wählen</option><option>Einzelunternehmen</option><option>GbR</option><option>e. K.</option><option>UG (haftungsbeschränkt)</option><option>GmbH</option><option>Weiß ich nicht</option></select></div>
+        <div class="field"><label for="ustid">USt-IdNr. <span class="hint">(falls vorhanden)</span></label><input type="text" id="ustid" name="ustid"></div>
+      </div>
+      <div class="field"><label for="register">Handelsregister <span class="hint">(falls eingetragen, z. B. Amtsgericht Köln HRB 12345)</span></label><input type="text" id="register" name="register"></div>
+      <div class="field"><label for="kammer">Kammer / Meisterbetrieb <span class="hint">(z. B. Handwerkskammer zu Köln, Meistertitel)</span></label><input type="text" id="kammer" name="kammer"></div>
+      <p class="hint" style="margin:0">Hinweis: Impressum und Datenschutzerklärung erstellen Sie mit einem Generator oder lassen sie prüfen. Wir bauen die Texte ein, leisten aber keine Rechtsberatung.</p>
+    </div>
+  </section>
+
+  <!-- 9 Abschluss -->
+  <section class="step" data-title="Absenden">
+    <p class="eyebrow">Fast geschafft</p>
+    <h2>Ihre Antworten</h2>
+    <p class="lead">Prüfen Sie kurz die Zusammenfassung und schicken Sie sie uns.</p>
+    <div class="card">
+      <div class="field"><label for="sonstiges">Noch etwas, das wir wissen sollten?</label><textarea id="sonstiges" name="sonstiges"></textarea></div>
+      <div class="field"><label for="wunschtermin">Bis wann soll die Website online sein?</label><input type="text" id="wunschtermin" name="wunschtermin" placeholder="z. B. Mitte Januar"></div>
+    </div>
+    <div class="card">
+      <label class="check"><input type="checkbox" id="einwilligung" name="einwilligung"><span>Ich bin einverstanden, dass meine Angaben verwendet werden, um ein Angebot und eine Website für meinen Betrieb zu erstellen. Die Angaben werden nicht auf einem Server gespeichert, sondern nur von mir selbst verschickt.</span></label>
+      <p class="error" id="consentError">Bitte bestätigen Sie die Einwilligung.</p>
+      <p class="error" id="requiredError">Bitte ergänzen Sie mindestens den Namen des Betriebs (Schritt 2).</p>
+    </div>
+    <div class="card">
+      <h3>Zusammenfassung</h3>
+      <div class="summary" id="summary"></div>
+      <div class="actions">
+        <button type="button" class="btn wa" id="sendWa">Per WhatsApp senden</button>
+        <button type="button" class="btn" id="copy">Antworten kopieren</button>
+      </div>
+      <p class="hint" id="sendHint" style="margin:10px 0 0"></p>
+    </div>
+    <div class="done" id="done">
+      <div class="big-ok" aria-hidden="true">✓</div>
+      <h2>Danke!</h2>
+      <p class="lead" style="margin:0 auto">Wir melden uns in Kürze mit einem ersten Entwurf.</p>
+    </div>
+  </section>
+
+</form>
+</main>
+
+<footer id="footer"></footer>
+
+<div class="nav">
+  <div class="nav-inner">
+    <button type="button" class="btn" id="back">Zurück</button>
+    <button type="button" class="btn primary" id="next">Los geht's</button>
+  </div>
+</div>
+
+<script>
+// ===== Einstellungen (vom Inhaber auszufüllen) =====
+var EINSTELLUNGEN = {
+  anbieter: "[Dein Name] · Websites für Kölner Betriebe",
+  whatsapp: "",   // eigene Nummer im internationalen Format ohne +, z. B. "4917012345678"
+  impressumLink: "" // Link zum eigenen Impressum, sobald vorhanden
+};
+
+(function () {
+  var form = document.getElementById('form');
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var cur = 0, KEY = 'fragebogen-v1';
+  document.getElementById('anbieter').textContent = EINSTELLUNGEN.anbieter;
+  document.getElementById('footer').innerHTML = EINSTELLUNGEN.impressumLink ? '<a href="' + EINSTELLUNGEN.impressumLink + '">Impressum und Datenschutz</a>' : 'Ihre Angaben bleiben auf Ihrem Gerät, bis Sie sie selbst senden.';
+
+  // Öffnungszeiten
+  var tage = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+  var hoursBox = document.getElementById('hours');
+  tage.forEach(function (t, i) {
+    var row = document.createElement('div'); row.className = 'hrow';
+    var zu = i === 6;
+    row.innerHTML = '<span class="day">' + t + '</span>' +
+      '<label class="toggle"><input type="checkbox" name="zu_' + i + '"' + (zu ? ' checked' : '') + '> geschlossen</label>' +
+      '<input type="time" name="von_' + i + '" value="' + (i === 5 ? '09:00' : '10:00') + '" aria-label="' + t + ' von">' +
+      '<input type="time" name="bis_' + i + '" value="' + (i === 5 ? '16:00' : '19:00') + '" aria-label="' + t + ' bis">';
+    if (zu) row.classList.add('closed');
+    row.querySelector('input[type=checkbox]').addEventListener('change', function (e) { row.classList.toggle('closed', e.target.checked); });
+    hoursBox.appendChild(row);
+  });
+
+  // Wiederholbare Zeilen
+  var counters = { leistungen: 0, team: 0 };
+  function addRow(kind, vals) {
+    vals = vals || [];
+    var box = document.getElementById(kind), n = counters[kind]++;
+    var row = document.createElement('div');
+    if (kind === 'leistungen') {
+      row.className = 'lrow';
+      row.innerHTML = '<input type="text" name="l_name_' + n + '" placeholder="z. B. Herrenhaarschnitt" aria-label="Leistung">' +
+        '<input type="text" name="l_dauer_' + n + '" placeholder="30 Min." aria-label="Dauer">' +
+        '<input type="text" name="l_preis_' + n + '" placeholder="25 €" aria-label="Preis">';
+    } else {
+      row.className = 'lrow team';
+      row.innerHTML = '<input type="text" name="t_name_' + n + '" placeholder="Vorname" aria-label="Name">' +
+        '<input type="text" name="t_rolle_' + n + '" placeholder="z. B. Inhaber, Fades" aria-label="Rolle">';
+    }
+    var del = document.createElement('button'); del.type = 'button'; del.className = 'del'; del.setAttribute('aria-label', 'Zeile entfernen'); del.textContent = '×';
+    del.addEventListener('click', function () { row.remove(); save(); });
+    row.appendChild(del);
+    var inputs = row.querySelectorAll('input');
+    vals.forEach(function (v, k) { if (inputs[k]) inputs[k].value = v; });
+    box.appendChild(row);
+  }
+  document.querySelectorAll('[data-add]').forEach(function (b) { b.addEventListener('click', function () { addRow(b.getAttribute('data-add')); }); });
+
+  // Speichern und Laden
+  function collectRaw() {
+    var out = {};
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (!el.name) return;
+      if (el.type === 'checkbox') { if (el.name.indexOf('zu_') === 0 || el.name === 'einwilligung') out[el.name] = el.checked; else { out[el.name] = out[el.name] || []; if (el.checked) out[el.name].push(el.value); } }
+      else if (el.type === 'radio') { if (el.checked) out[el.name] = el.value; }
+      else out[el.name] = el.value;
+    });
+    return out;
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify({ raw: collectRaw(), l: counters.leistungen, t: counters.team, step: cur })); } catch (e) {} }
+  function load() {
+    var data = null; try { data = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+    if (!data) { addRow('leistungen'); addRow('leistungen'); addRow('leistungen'); addRow('team'); return 0; }
+    var raw = data.raw || {};
+    for (var i = 0; i < (data.l || 0); i++) if (Object.keys(raw).some(function (k) { return k.indexOf('l_name_' + i) === 0; })) addRow('leistungen', [raw['l_name_' + i], raw['l_dauer_' + i], raw['l_preis_' + i]]); else counters.leistungen++;
+    for (var j = 0; j < (data.t || 0); j++) if (Object.keys(raw).some(function (k) { return k.indexOf('t_name_' + j) === 0; })) addRow('team', [raw['t_name_' + j], raw['t_rolle_' + j]]); else counters.team++;
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (!el.name || !(el.name in raw)) return;
+      var v = raw[el.name];
+      if (el.type === 'checkbox') el.checked = Array.isArray(v) ? v.indexOf(el.value) > -1 : !!v;
+      else if (el.type === 'radio') el.checked = v === el.value;
+      else el.value = v;
+    });
+    document.querySelectorAll('.hrow').forEach(function (r) { r.classList.toggle('closed', r.querySelector('input[type=checkbox]').checked); });
+    return Math.min(data.step || 0, steps.length - 1);
+  }
+  form.addEventListener('input', save); form.addEventListener('change', save);
+
+  // Zusammenfassung bauen
+  function build() {
+    var r = collectRaw(), L = [];
+    function line(label, v) { if (Array.isArray(v)) v = v.join(', '); if (v && String(v).trim()) L.push(label + ': ' + String(v).trim()); }
+    function head(t) { L.push(''); L.push('— ' + t.toUpperCase() + ' —'); }
+    L.push('FRAGEBOGEN WEBSITE');
+    line('Interesse', r.pakete);
+    head('Betrieb');
+    line('Name', r.name); line('Branche', r.branche); line('Seit', r.seit); line('Ansprechpartner', r.ansprechpartner);
+    line('Adresse', [r.strasse, [r.plz, r.ort].filter(Boolean).join(' ')].filter(Boolean).join(', '));
+    line('Telefon', r.telefon); line('WhatsApp', r.whatsapp); line('E-Mail', r.email);
+    line('Instagram', r.instagram); line('Facebook/TikTok', r.facebook); line('Google-Profil', r.google); line('Alte Website', r.altseite);
+    head('Öffnungszeiten');
+    var zeiten = [];
+    tage.forEach(function (t, i) { var z = r['zu_' + i] ? 'geschlossen' : (r['von_' + i] + '–' + r['bis_' + i]); zeiten.push({ tag: t, zeit: z }); L.push(t + ': ' + z); });
+    line('Besonderheiten', r.zeitenHinweis);
+    head('Leistungen');
+    var leistungen = [];
+    Object.keys(r).filter(function (k) { return k.indexOf('l_name_') === 0 && r[k].trim(); }).forEach(function (k) {
+      var n = k.slice(7), it = { leistung: r[k].trim(), dauer: (r['l_dauer_' + n] || '').trim(), preis: (r['l_preis_' + n] || '').trim() };
+      leistungen.push(it); L.push('• ' + it.leistung + (it.dauer ? ' | ' + it.dauer : '') + (it.preis ? ' | ' + it.preis : ''));
+    });
+    line('Preise zeigen', r.preiseZeigen); line('Zahlungsarten', r.zahlung);
+    head('Über den Betrieb');
+    line('Beschreibung', r.beschreibung); line('Besonders', r.besonders); line('Geschichte', r.geschichte);
+    line('Zielgruppe', r.zielgruppe); line('Sprachen', r.sprachen);
+    var team = [];
+    Object.keys(r).filter(function (k) { return k.indexOf('t_name_') === 0 && r[k].trim(); }).forEach(function (k) {
+      var n = k.slice(7); team.push({ name: r[k].trim(), rolle: (r['t_rolle_' + n] || '').trim() });
+    });
+    if (team.length) L.push('Team: ' + team.map(function (p) { return p.name + (p.rolle ? ' (' + p.rolle + ')' : ''); }).join(', '));
+    head('Stil');
+    line('Stimmung', r.stil); line('Feste Farben', r.farbenVorhanden);
+    if (r.farbenVorhanden === 'Ja') line('Farben', [r.farbe1, r.farbe2, r.farbe3]);
+    line('Vorbilder', r.vorbilder); line('No-Gos', r.nogo);
+    head('Funktionen');
+    line('Termine', r.termin); line('Buchungstool', r.buchungstool); line('Inhalte', r.funktionen);
+    line('Wunsch-Adresse', r.domain); line('E-Mail mit Endung', r.mailWunsch);
+    head('Fotos und Impressum');
+    line('Fotos', r.fotos); line('Logo', r.logo);
+    line('Inhaber/in', r.inhaber); line('Rechtsform', r.rechtsform); line('USt-IdNr.', r.ustid); line('Register', r.register); line('Kammer/Meister', r.kammer);
+    head('Sonstiges');
+    line('Bis wann', r.wunschtermin); line('Anmerkungen', r.sonstiges);
+    var daten = {
+      v: 1, pakete: r.pakete, betrieb: { name: r.name, branche: r.branche, seit: r.seit, ansprechpartner: r.ansprechpartner, strasse: r.strasse, plz: r.plz, ort: r.ort, telefon: r.telefon, whatsapp: r.whatsapp, email: r.email, instagram: r.instagram, facebook: r.facebook, google: r.google, altseite: r.altseite },
+      zeiten: zeiten, zeitenHinweis: r.zeitenHinweis, leistungen: leistungen, preiseZeigen: r.preiseZeigen, zahlung: r.zahlung,
+      texte: { beschreibung: r.beschreibung, besonders: r.besonders, geschichte: r.geschichte }, zielgruppe: r.zielgruppe, sprachen: r.sprachen, team: team,
+      stil: { stimmung: r.stil, farbenVorhanden: r.farbenVorhanden, farben: [r.farbe1, r.farbe2, r.farbe3], vorbilder: r.vorbilder, nogo: r.nogo },
+      funktionen: { termin: r.termin, buchungstool: r.buchungstool, inhalte: r.funktionen, domain: r.domain, mailWunsch: r.mailWunsch },
+      fotos: r.fotos, logo: r.logo, impressum: { inhaber: r.inhaber, rechtsform: r.rechtsform, ustid: r.ustid, register: r.register, kammer: r.kammer },
+      wunschtermin: r.wunschtermin, sonstiges: r.sonstiges
+    };
+    var clean = [];
+    for (var q = 0; q < L.length; q++) {
+      if (L[q].indexOf('— ') === 0) { var nx = L.slice(q + 1).find(function (x) { return x !== ''; }); if (!nx || nx.indexOf('— ') === 0) continue; }
+      clean.push(L[q]);
+    }
+    var text = clean.join('\n').replace(/\n{3,}/g, '\n\n').replace(/\n+$/, '');
+    return { text: text, full: text + '\n\n— DATEN FÜR DIE WEBSITE —\n' + JSON.stringify(daten) };
+  }
+
+  // Navigation
+  var back = document.getElementById('back'), next = document.getElementById('next');
+  function show(i) {
+    steps[cur].classList.remove('active'); cur = i; steps[cur].classList.add('active');
+    document.getElementById('stepCount').textContent = 'Schritt ' + (cur + 1) + ' von ' + steps.length + ' · ' + steps[cur].getAttribute('data-title');
+    document.getElementById('progress').style.width = ((cur + 1) / steps.length * 100) + '%';
+    back.style.visibility = cur === 0 ? 'hidden' : 'visible';
+    next.textContent = cur === 0 ? "Los geht's" : (cur === steps.length - 1 ? 'Fertig' : 'Weiter');
+    next.style.display = cur === steps.length - 1 ? 'none' : '';
+    if (cur === steps.length - 1) document.getElementById('summary').textContent = build().text;
+    window.scrollTo(0, 0); save();
+  }
+  back.addEventListener('click', function () { if (cur > 0) show(cur - 1); });
+  next.addEventListener('click', function () { if (cur < steps.length - 1) show(cur + 1); });
+
+  function check() {
+    var ok = true, c = document.getElementById('einwilligung').checked, n = form.elements.name.value.trim();
+    document.getElementById('consentError').classList.toggle('show', !c);
+    document.getElementById('requiredError').classList.toggle('show', !n);
+    return c && n;
+  }
+  function finished() { document.getElementById('done').classList.add('show'); }
+  var hint = document.getElementById('sendHint');
+  function copyText(t, cb) {
+    try { navigator.clipboard.writeText(t).then(function () { cb(true); }, function () { cb(false); }); } catch (e) { cb(false); }
+  }
+  document.getElementById('copy').addEventListener('click', function () {
+    if (!check()) return;
+    copyText(build().full, function (ok) {
+      hint.textContent = ok ? 'Kopiert. Fügen Sie den Text jetzt in WhatsApp oder eine E-Mail ein.' : 'Kopieren ging nicht automatisch. Bitte markieren Sie die Zusammenfassung und kopieren Sie sie.';
+      if (ok) finished();
+    });
+  });
+  document.getElementById('sendWa').addEventListener('click', function () {
+    if (!check()) return;
+    var full = build().full, nr = EINSTELLUNGEN.whatsapp.replace(/\D/g, '');
+    var base = nr ? 'https://wa.me/' + nr : 'https://wa.me/';
+    if (full.length < 1800) { location.href = base + '?text=' + encodeURIComponent(full); finished(); return; }
+    copyText(full, function (ok) {
+      hint.textContent = ok ? 'Ihre Antworten sind kopiert. WhatsApp öffnet sich gleich, fügen Sie den Text dort einfach ein.' : 'Bitte kopieren Sie die Zusammenfassung und senden Sie sie per WhatsApp.';
+      if (ok) { finished(); setTimeout(function () { location.href = base + '?text=' + encodeURIComponent('Hallo, hier meine Antworten zum Website-Fragebogen:'); }, 900); }
+    });
+  });
+
+  show(load());
+})();
+</script>
+</body>
+</html>
