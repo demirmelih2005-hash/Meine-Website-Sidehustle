@@ -1,0 +1,4 @@
+Alle Schriften in diesem Ordner (Manrope, Playfair Display, Anton) stehen unter der
+SIL Open Font License 1.1. Kommerzielle Nutzung und Einbettung in Websites sind erlaubt.
+https://openfontlicense.org
+Die Schriften werden lokal ausgeliefert (kein Abruf bei Google), das ist datenschutzfreundlich.

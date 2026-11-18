@@ -1,0 +1,238 @@
+{
+  "seite": {
+    "domain": "veedel-cut.example",
+    "erstellt_von": "Website-Baukasten (Demo)",
+    "demo": true
+  },
+  "design": {
+    "thema": "nacht",
+    "farben": {
+      "brand": "#d4202a",
+      "accent": "#f2c14e"
+    }
+  },
+  "inhalt": {
+    "slogan": "Barbershop in Köln-Nippes",
+    "hero_titel": "Frisch im <em>Veedel.</em>",
+    "hero_text": "Skin Fades, Bartpflege und klassische Schnitte, fünf Minuten vom Neusser Platz. Schreib uns kurz per WhatsApp, dann sitzt du ohne Wartezeit auf dem Stuhl.",
+    "fakten": [
+      [
+        "3 Stühle",
+        "kein Gedränge"
+      ],
+      [
+        "6 Tage",
+        "die Woche geöffnet"
+      ],
+      [
+        "0 Min.",
+        "Wartezeit mit Termin"
+      ],
+      [
+        "7 Tage",
+        "kostenlos nachschneiden"
+      ]
+    ],
+    "leistungen_texte": {
+      "Haarschnitt": "Waschen, schneiden, stylen. Klassisch oder modern, wie du willst.",
+      "Skin Fade": "Sauberer Übergang bis auf die Haut, Kontur mit dem Rasiermesser.",
+      "Bart trimmen": "Form, Kontur und heißes Tuch. Danach Bartöl.",
+      "Schnitt + Bart": "Das Komplettpaket für Hochzeit, Date oder einfach so.",
+      "Kinder bis 12": "Kurz, entspannt und ohne Drama."
+    },
+    "vorteile": [
+      {
+        "icon": "zeit",
+        "titel": "Kein Warten",
+        "text": "Mit Termin per WhatsApp kommst du rein und bist dran. Ohne Termin geht natürlich auch."
+      },
+      {
+        "icon": "schere",
+        "titel": "Saubere Fades",
+        "text": "Jeder Übergang wird von Hand nachgearbeitet, bis er wirklich sitzt."
+      },
+      {
+        "icon": "herz",
+        "titel": "Nachschnitt-Garantie",
+        "text": "Passt etwas nicht, kommst du innerhalb von 7 Tagen vorbei und wir schneiden kostenlos nach."
+      }
+    ],
+    "ueber_titel": "Ein Barbershop, wie er ins <em>Veedel</em> gehört.",
+    "ueber_text": [
+      "Veedel Cut ist ein kleiner Laden mit drei Stühlen und viel Herz. Hier kennt man sich, hier wird gequatscht, und trotzdem wird präzise gearbeitet.",
+      "Wir schneiden Nachbarn, Schüler, Väter mit ihren Kids und alle, die einfach gut aussehen wollen. Ohne Schnickschnack, mit fairen Preisen."
+    ],
+    "zitat": "Ne Fade muss sitzen. Alles andere ist Nebensache.",
+    "faq": [
+      [
+        "Kann ich auch ohne Termin kommen?",
+        "Klar. Mit Termin wartest du aber nicht, besonders samstags."
+      ],
+      [
+        "Wie kann ich bezahlen?",
+        "Bar, mit Karte oder mit dem Handy."
+      ],
+      [
+        "Schneidet ihr auch Kinder?",
+        "Ja, Kinder bis 12 zahlen 16 €. Am besten vormittags, da ist es ruhiger."
+      ],
+      [
+        "Was, wenn mir der Schnitt nicht gefällt?",
+        "Komm innerhalb von 7 Tagen vorbei, wir schneiden kostenlos nach."
+      ]
+    ],
+    "cta_titel": "Bock auf einen <em>frischen</em> Schnitt?",
+    "cta_text": "Schreib uns per WhatsApp, wann es dir passt. Wir antworten meist innerhalb einer Stunde.",
+    "seo_titel": "Veedel Cut · Barbershop in Köln-Nippes · Fades, Bart, Schnitt",
+    "seo_beschreibung": "Barbershop in Köln-Nippes: Skin Fades, Bartpflege und Haarschnitte ab 15 €. Termin per WhatsApp, ohne Wartezeit.",
+    "leistungen_intro": "Feste Preise, klare Dauer, keine Überraschungen."
+  },
+  "fragebogen": {
+    "v": 1,
+    "pakete": [
+      "Website",
+      "Google-Unternehmensprofil"
+    ],
+    "betrieb": {
+      "name": "Veedel Cut",
+      "branche": "Barbershop / Friseur",
+      "seit": "2019",
+      "ansprechpartner": "Kemal",
+      "strasse": "Musterstraße 1",
+      "plz": "50733",
+      "ort": "Köln-Nippes",
+      "telefon": "0221 4710 123",
+      "whatsapp": "0171 3920012",
+      "email": "hallo@veedel-cut.example",
+      "instagram": "@veedelcut.demo",
+      "facebook": "",
+      "google": "",
+      "altseite": ""
+    },
+    "zeiten": [
+      {
+        "tag": "Montag",
+        "zeit": "geschlossen"
+      },
+      {
+        "tag": "Dienstag",
+        "zeit": "10:00–19:00"
+      },
+      {
+        "tag": "Mittwoch",
+        "zeit": "10:00–19:00"
+      },
+      {
+        "tag": "Donnerstag",
+        "zeit": "10:00–20:00"
+      },
+      {
+        "tag": "Freitag",
+        "zeit": "10:00–20:00"
+      },
+      {
+        "tag": "Samstag",
+        "zeit": "09:00–16:00"
+      },
+      {
+        "tag": "Sonntag",
+        "zeit": "geschlossen"
+      }
+    ],
+    "zeitenHinweis": "Samstags am besten mit Termin.",
+    "leistungen": [
+      {
+        "leistung": "Haarschnitt",
+        "dauer": "ca. 30 Min.",
+        "preis": "24"
+      },
+      {
+        "leistung": "Skin Fade",
+        "dauer": "ca. 40 Min.",
+        "preis": "28"
+      },
+      {
+        "leistung": "Bart trimmen",
+        "dauer": "ca. 20 Min.",
+        "preis": "15"
+      },
+      {
+        "leistung": "Schnitt + Bart",
+        "dauer": "ca. 50 Min.",
+        "preis": "36"
+      },
+      {
+        "leistung": "Kinder bis 12",
+        "dauer": "ca. 20 Min.",
+        "preis": "16"
+      }
+    ],
+    "preiseZeigen": "Ja, alle",
+    "zahlung": [
+      "Bar",
+      "EC-Karte",
+      "Apple / Google Pay"
+    ],
+    "texte": {
+      "beschreibung": "Kleiner Barbershop in Nippes mit drei Stühlen.",
+      "besonders": "Keine Wartezeit mit Termin, saubere Fades, Nachschnitt-Garantie.",
+      "geschichte": ""
+    },
+    "zielgruppe": [
+      "Junge Leute",
+      "Familien",
+      "Stammkunden aus dem Viertel"
+    ],
+    "sprachen": "Deutsch, Türkisch, Englisch",
+    "team": [
+      {
+        "name": "Kemal",
+        "rolle": "Inhaber · Fades und Kontur"
+      },
+      {
+        "name": "Lena",
+        "rolle": "Klassische Schnitte · Kinder"
+      },
+      {
+        "name": "Dennis",
+        "rolle": "Bart und Rasur"
+      }
+    ],
+    "stil": {
+      "stimmung": [
+        "Dunkel und stylisch",
+        "Kölsch und lokal"
+      ],
+      "farbenVorhanden": "Nein, bitte vorschlagen",
+      "farben": [],
+      "vorbilder": "",
+      "nogo": ""
+    },
+    "funktionen": {
+      "termin": [
+        "Per WhatsApp",
+        "Ohne Termin, einfach vorbeikommen"
+      ],
+      "buchungstool": "",
+      "inhalte": [
+        "Preisliste / Speisekarte",
+        "Fotogalerie",
+        "Team vorstellen",
+        "Häufige Fragen"
+      ],
+      "domain": "veedel-cut.example",
+      "mailWunsch": "Ja"
+    },
+    "fotos": "Bitte vor Ort Fotos machen",
+    "logo": "Nicht vorhanden",
+    "impressum": {
+      "inhaber": "",
+      "rechtsform": "Einzelunternehmen",
+      "ustid": "",
+      "register": "",
+      "kammer": ""
+    },
+    "wunschtermin": "",
+    "sonstiges": ""
+  }
+}

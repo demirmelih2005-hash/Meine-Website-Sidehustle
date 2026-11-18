@@ -114,13 +114,16 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px
   <section class="step active" data-title="Start">
     <p class="eyebrow">Ihre neue Website</p>
     <h1>Erzählen Sie uns von Ihrem Betrieb.</h1>
-    <p class="lead">Mit Ihren Antworten bauen wir eine Website, die wirklich zu Ihnen passt. Das dauert etwa 10 Minuten. Ihre Eingaben werden auf diesem Gerät zwischengespeichert, Sie können also jederzeit pausieren.</p>
+    <p class="lead">Mit Ihren Antworten bauen wir eine Website, die wirklich zu Ihnen passt. Das dauert etwa 10 Minuten. Was Sie nicht wissen, lassen Sie einfach leer.</p>
     <div class="card">
       <ul class="welcome-list">
         <li><b class="n">1</b><span>Sie füllen diesen Fragebogen aus. Was Sie nicht wissen, lassen Sie einfach leer.</span></li>
         <li><b class="n">2</b><span>Am Ende schicken Sie uns die Antworten per WhatsApp oder kopieren sie.</span></li>
         <li><b class="n">3</b><span>Innerhalb weniger Tage bekommen Sie einen ersten Entwurf zum Ansehen.</span></li>
       </ul>
+    </div>
+    <div class="card">
+      <label class="check"><input type="checkbox" id="merken"><span>Eingaben auf diesem Gerät zwischenspeichern, damit ich später weitermachen kann. <span class="hint">(freiwillig, nur im Browser dieses Geräts, jederzeit löschbar; mehr in den <a href="datenschutz.html" target="_blank">Datenschutzhinweisen</a>)</span></span></label>
     </div>
     <div class="card">
       <h3>Wofür interessieren Sie sich?</h3>
@@ -158,7 +161,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px
         <div class="field"><label for="telefon">Telefon</label><input type="tel" id="telefon" name="telefon" autocomplete="tel"></div>
         <div class="field"><label for="whatsapp">WhatsApp für Kunden</label><input type="tel" id="whatsapp" name="whatsapp"></div>
       </div>
-      <div class="field"><label for="email">E-Mail</label><input type="email" id="email" name="email" autocomplete="email"></div>
+      <div class="field"><label for="email">E-Mail * <span class="hint">(Pflichtangabe im Impressum)</span></label><input type="email" id="email" name="email" autocomplete="email" required></div>
       <div class="grid2">
         <div class="field"><label for="instagram">Instagram</label><input type="text" id="instagram" name="instagram" placeholder="@ihrbetrieb"></div>
         <div class="field"><label for="facebook">Facebook / TikTok</label><input type="text" id="facebook" name="facebook"></div>
@@ -264,8 +267,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px
         </div></div>
       <div class="colors">
         <label>Hauptfarbe<input type="color" name="farbe1" value="#c81e28"></label>
-        <label>Zweite Farbe<input type="color" name="farbe2" value="#16181d"></label>
-        <label>Akzent<input type="color" name="farbe3" value="#f2c14e"></label>
+        <label>Akzentfarbe<input type="color" name="farbe3" value="#f2c14e"></label>
       </div>
     </div>
     <div class="card">
@@ -286,7 +288,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px
         <label class="chip"><input type="checkbox" name="termin" value="Online-Buchungstool"><span>Online-Buchungstool</span></label>
         <label class="chip"><input type="checkbox" name="termin" value="Ohne Termin, einfach vorbeikommen"><span>Einfach vorbeikommen</span></label>
       </div>
-      <div class="field" style="margin-top:14px"><label for="buchungstool">Falls Sie schon ein Buchungstool nutzen: welches?</label><input type="text" id="buchungstool" name="buchungstool" placeholder="z. B. Treatwell, Planity, Shore, Calendly"></div>
+      <div class="grid2" style="margin-top:14px"><div class="field"><label for="buchungstool">Falls Sie schon ein Buchungstool nutzen: welches?</label><input type="text" id="buchungstool" name="buchungstool" placeholder="z. B. Treatwell, Planity, Shore"></div><div class="field"><label for="buchungslink">Link zu Ihrer Buchungsseite</label><input type="url" id="buchungslink" name="buchungslink" placeholder="https://…"></div></div>
     </div>
     <div class="card">
       <h3>Was soll auf die Seite?</h3>
@@ -338,11 +340,26 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px
       <div class="field"><label for="inhaber">Vollständiger Name der Inhaberin / des Inhabers *</label><input type="text" id="inhaber" name="inhaber" required></div>
       <div class="grid2">
         <div class="field"><label for="rechtsform">Rechtsform</label>
-          <select id="rechtsform" name="rechtsform"><option value="">Bitte wählen</option><option>Einzelunternehmen</option><option>GbR</option><option>e. K.</option><option>UG (haftungsbeschränkt)</option><option>GmbH</option><option>Weiß ich nicht</option></select></div>
+          <select id="rechtsform" name="rechtsform"><option value="">Bitte wählen</option><option>Einzelunternehmen</option><option>e. K.</option><option>GbR</option><option>OHG</option><option>KG</option><option>UG (haftungsbeschränkt)</option><option>GmbH</option><option>GmbH &amp; Co. KG</option><option>e. V.</option><option>Weiß ich nicht</option></select></div>
         <div class="field"><label for="ustid">USt-IdNr. <span class="hint">(falls vorhanden)</span></label><input type="text" id="ustid" name="ustid"></div>
       </div>
+      <div class="field"><label for="firma">Offizieller Name laut Gewerbe- oder Handelsregister <span class="hint">(falls anders als der Ladenname, z. B. „Veedel Cut GmbH“)</span></label><input type="text" id="firma" name="firma"></div>
+      <div class="field"><label for="vertreter">Geschäftsführer/in bzw. vertretungsberechtigte Person(en) <span class="hint">(nur bei GmbH, UG, GbR, OHG, KG, Verein)</span></label><input type="text" id="vertreter" name="vertreter"></div>
+      <div class="field"><label for="impressumAdresse">Adresse für das Impressum <span class="hint">(nur wenn anders als die Ladenadresse; ein Postfach reicht nicht)</span></label><input type="text" id="impressumAdresse" name="impressumAdresse"></div>
       <div class="field"><label for="register">Handelsregister <span class="hint">(falls eingetragen, z. B. Amtsgericht Köln HRB 12345)</span></label><input type="text" id="register" name="register"></div>
-      <div class="field"><label for="kammer">Kammer / Meisterbetrieb <span class="hint">(z. B. Handwerkskammer zu Köln, Meistertitel)</span></label><input type="text" id="kammer" name="kammer"></div>
+      <div class="field"><label for="widnr">Wirtschafts-Identifikationsnummer <span class="hint">(falls vom Finanzamt mitgeteilt; die normale Steuernummer bitte nicht angeben)</span></label><input type="text" id="widnr" name="widnr"></div>
+      <div class="field"><span class="label">Ist Ihr Betrieb ein Handwerk mit Meisterpflicht oder ein anderer reglementierter Beruf?</span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="reglementiert" value="Ja"><span>Ja</span></label>
+          <label class="chip"><input type="radio" name="reglementiert" value="Nein"><span>Nein</span></label>
+          <label class="chip"><input type="radio" name="reglementiert" value="Weiß ich nicht"><span>Weiß ich nicht</span></label>
+        </div></div>
+      <div class="grid2">
+        <div class="field"><label for="kammer">Kammer <span class="hint">(z. B. Handwerkskammer zu Köln)</span></label><input type="text" id="kammer" name="kammer"></div>
+        <div class="field"><label for="berufsbez">Berufsbezeichnung <span class="hint">(z. B. Friseurmeisterin)</span></label><input type="text" id="berufsbez" name="berufsbez"></div>
+      </div>
+      <div class="field"><label for="erlaubnis">Brauchen Sie für Ihr Gewerbe eine behördliche Erlaubnis? Wenn ja: welche und von welcher Behörde?</label><input type="text" id="erlaubnis" name="erlaubnis"></div>
+      <div class="field"><label for="beschaeftigte">Wie viele Personen haben am 31.12. letzten Jahres im Betrieb gearbeitet? <span class="hint">(inkl. Teilzeit und Minijob)</span></label><input type="number" id="beschaeftigte" name="beschaeftigte" min="0" inputmode="numeric"></div>
       <p class="hint" style="margin:0">Hinweis: Impressum und Datenschutzerklärung erstellen Sie mit einem Generator oder lassen sie prüfen. Wir bauen die Texte ein, leisten aber keine Rechtsberatung.</p>
     </div>
   </section>
@@ -357,19 +374,21 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px
       <div class="field"><label for="wunschtermin">Bis wann soll die Website online sein?</label><input type="text" id="wunschtermin" name="wunschtermin" placeholder="z. B. Mitte Januar"></div>
     </div>
     <div class="card">
-      <label class="check"><input type="checkbox" id="einwilligung" name="einwilligung"><span>Ich bin einverstanden, dass meine Angaben verwendet werden, um ein Angebot und eine Website für meinen Betrieb zu erstellen. Die Angaben werden nicht auf einem Server gespeichert, sondern nur von mir selbst verschickt.</span></label>
-      <p class="error" id="consentError">Bitte bestätigen Sie die Einwilligung.</p>
-      <p class="error" id="requiredError">Bitte ergänzen Sie mindestens den Namen des Betriebs (Schritt 2).</p>
+      <label class="check"><input type="checkbox" id="einwilligung" name="einwilligung"><span>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzhinweise</a> gelesen. Mir ist bekannt, dass meine Antworten beim Senden über WhatsApp über die Server von WhatsApp (Meta) laufen. Falls ich Teammitglieder angegeben habe, sind diese mit der Nennung einverstanden.</span></label>
+      <p class="error" id="consentError">Bitte bestätigen Sie, dass Sie die Hinweise gelesen haben.</p>
+      <p class="error" id="requiredError">Bitte ergänzen Sie den Namen des Betriebs und Ihre E-Mail-Adresse (Schritt 2).</p>
     </div>
     <div class="card">
       <h3>Zusammenfassung</h3>
       <div class="summary" id="summary"></div>
       <div class="actions">
         <button type="button" class="btn wa" id="sendWa">Per WhatsApp senden</button>
-        <button type="button" class="btn" id="copy">Antworten kopieren</button>
+        <button type="button" class="btn" id="sendMail">Per E-Mail senden</button>
+        <button type="button" class="btn" id="copy">Nur kopieren</button>
       </div>
-      <p class="hint" id="sendHint" style="margin:10px 0 0"></p>
+      <p class="hint" id="sendHint" style="margin:10px 0 0">Beim Senden werden Ihre Antworten in die Zwischenablage kopiert. Fügen Sie sie dann in WhatsApp oder in die E-Mail ein.</p>
     </div>
+    <p style="text-align:center"><button type="button" class="btn" id="loeschen" style="flex:none;font-size:14px;padding:10px 16px">Alle Eingaben löschen</button></p>
     <div class="done" id="done">
       <div class="big-ok" aria-hidden="true">✓</div>
       <h2>Danke!</h2>
@@ -393,8 +412,10 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 10px
 // ===== Einstellungen (vom Inhaber auszufüllen) =====
 var EINSTELLUNGEN = {
   anbieter: "[Dein Name] · Websites für Kölner Betriebe",
-  whatsapp: "",   // eigene Nummer im internationalen Format ohne +, z. B. "4917012345678"
-  impressumLink: "" // Link zum eigenen Impressum, sobald vorhanden
+  whatsapp: "",                       // eigene Nummer im internationalen Format ohne +, z. B. "4917012345678"
+  email: "",                          // eigene E-Mail-Adresse für den Versand per E-Mail
+  impressumLink: "impressum.html",    // vor dem Livegang ausfüllen!
+  datenschutzLink: "datenschutz.html"
 };
 
 (function () {
@@ -402,7 +423,7 @@ var EINSTELLUNGEN = {
   var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
   var cur = 0, KEY = 'fragebogen-v1';
   document.getElementById('anbieter').textContent = EINSTELLUNGEN.anbieter;
-  document.getElementById('footer').innerHTML = EINSTELLUNGEN.impressumLink ? '<a href="' + EINSTELLUNGEN.impressumLink + '">Impressum und Datenschutz</a>' : 'Ihre Angaben bleiben auf Ihrem Gerät, bis Sie sie selbst senden.';
+  document.getElementById('footer').innerHTML = '<a href="' + EINSTELLUNGEN.impressumLink + '">Impressum</a> · <a href="' + EINSTELLUNGEN.datenschutzLink + '">Datenschutz</a>';
 
   // Öffnungszeiten
   var tage = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
@@ -451,13 +472,22 @@ var EINSTELLUNGEN = {
       if (!el.name) return;
       if (el.type === 'checkbox') { if (el.name.indexOf('zu_') === 0 || el.name === 'einwilligung') out[el.name] = el.checked; else { out[el.name] = out[el.name] || []; if (el.checked) out[el.name].push(el.value); } }
       else if (el.type === 'radio') { if (el.checked) out[el.name] = el.value; }
-      else out[el.name] = el.value;
+      else out[el.name] = typeof el.value === 'string' ? el.value.trim() : el.value;
     });
     return out;
   }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify({ raw: collectRaw(), l: counters.leistungen, t: counters.team, step: cur })); } catch (e) {} }
+  var MERK_KEY = 'fragebogen-merken', merken = document.getElementById('merken');
+  try { merken.checked = localStorage.getItem(MERK_KEY) === 'ja'; } catch (e) {}
+  function loeschen() { try { localStorage.removeItem(KEY); localStorage.removeItem(MERK_KEY); } catch (e) {} }
+  merken.addEventListener('change', function () {
+    if (merken.checked) { try { localStorage.setItem(MERK_KEY, 'ja'); } catch (e) {} save(); } else loeschen();
+  });
+  function save() {
+    if (!merken.checked) return;
+    try { localStorage.setItem(KEY, JSON.stringify({ raw: collectRaw(), l: counters.leistungen, t: counters.team, step: cur })); } catch (e) {}
+  }
   function load() {
-    var data = null; try { data = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+    var data = null; if (merken.checked) { try { data = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {} }
     if (!data) { addRow('leistungen'); addRow('leistungen'); addRow('leistungen'); addRow('team'); return 0; }
     var raw = data.raw || {};
     for (var i = 0; i < (data.l || 0); i++) if (Object.keys(raw).some(function (k) { return k.indexOf('l_name_' + i) === 0; })) addRow('leistungen', [raw['l_name_' + i], raw['l_dauer_' + i], raw['l_preis_' + i]]); else counters.leistungen++;
@@ -507,23 +537,23 @@ var EINSTELLUNGEN = {
     if (team.length) L.push('Team: ' + team.map(function (p) { return p.name + (p.rolle ? ' (' + p.rolle + ')' : ''); }).join(', '));
     head('Stil');
     line('Stimmung', r.stil); line('Feste Farben', r.farbenVorhanden);
-    if (r.farbenVorhanden === 'Ja') line('Farben', [r.farbe1, r.farbe2, r.farbe3]);
+    if (r.farbenVorhanden === 'Ja') line('Farben', [r.farbe1, r.farbe3]);
     line('Vorbilder', r.vorbilder); line('No-Gos', r.nogo);
     head('Funktionen');
-    line('Termine', r.termin); line('Buchungstool', r.buchungstool); line('Inhalte', r.funktionen);
+    line('Termine', r.termin); line('Buchungstool', r.buchungstool); line('Buchungslink', r.buchungslink); line('Inhalte', r.funktionen);
     line('Wunsch-Adresse', r.domain); line('E-Mail mit Endung', r.mailWunsch);
     head('Fotos und Impressum');
     line('Fotos', r.fotos); line('Logo', r.logo);
-    line('Inhaber/in', r.inhaber); line('Rechtsform', r.rechtsform); line('USt-IdNr.', r.ustid); line('Register', r.register); line('Kammer/Meister', r.kammer);
+    line('Inhaber/in', r.inhaber); line('Firma', r.firma); line('Vertreten durch', r.vertreter); line('Impressum-Adresse', r.impressumAdresse); line('Rechtsform', r.rechtsform); line('USt-IdNr.', r.ustid); line('W-IdNr.', r.widnr); line('Register', r.register); line('Reglementiert', r.reglementiert); line('Kammer', r.kammer); line('Berufsbezeichnung', r.berufsbez); line('Erlaubnis', r.erlaubnis); line('Beschäftigte', r.beschaeftigte);
     head('Sonstiges');
     line('Bis wann', r.wunschtermin); line('Anmerkungen', r.sonstiges);
     var daten = {
       v: 1, pakete: r.pakete, betrieb: { name: r.name, branche: r.branche, seit: r.seit, ansprechpartner: r.ansprechpartner, strasse: r.strasse, plz: r.plz, ort: r.ort, telefon: r.telefon, whatsapp: r.whatsapp, email: r.email, instagram: r.instagram, facebook: r.facebook, google: r.google, altseite: r.altseite },
       zeiten: zeiten, zeitenHinweis: r.zeitenHinweis, leistungen: leistungen, preiseZeigen: r.preiseZeigen, zahlung: r.zahlung,
       texte: { beschreibung: r.beschreibung, besonders: r.besonders, geschichte: r.geschichte }, zielgruppe: r.zielgruppe, sprachen: r.sprachen, team: team,
-      stil: { stimmung: r.stil, farbenVorhanden: r.farbenVorhanden, farben: [r.farbe1, r.farbe2, r.farbe3], vorbilder: r.vorbilder, nogo: r.nogo },
-      funktionen: { termin: r.termin, buchungstool: r.buchungstool, inhalte: r.funktionen, domain: r.domain, mailWunsch: r.mailWunsch },
-      fotos: r.fotos, logo: r.logo, impressum: { inhaber: r.inhaber, rechtsform: r.rechtsform, ustid: r.ustid, register: r.register, kammer: r.kammer },
+      stil: { stimmung: r.stil, farbenVorhanden: r.farbenVorhanden, farben: [r.farbe1, r.farbe3], vorbilder: r.vorbilder, nogo: r.nogo },
+      funktionen: { termin: r.termin, buchungstool: r.buchungstool, buchungslink: r.buchungslink, inhalte: r.funktionen, domain: r.domain, mailWunsch: r.mailWunsch },
+      fotos: r.fotos, logo: r.logo, impressum: { inhaber: r.inhaber, firma: r.firma, vertreter: r.vertreter, impressumAdresse: r.impressumAdresse, rechtsform: r.rechtsform, ustid: r.ustid, widnr: r.widnr, register: r.register, reglementiert: r.reglementiert, kammer: r.kammer, berufsbez: r.berufsbez, erlaubnis: r.erlaubnis, beschaeftigte: r.beschaeftigte },
       wunschtermin: r.wunschtermin, sonstiges: r.sonstiges
     };
     var clean = [];
@@ -551,12 +581,12 @@ var EINSTELLUNGEN = {
   next.addEventListener('click', function () { if (cur < steps.length - 1) show(cur + 1); });
 
   function check() {
-    var ok = true, c = document.getElementById('einwilligung').checked, n = form.elements.name.value.trim();
+    var c = document.getElementById('einwilligung').checked, n = form.elements.name.value.trim(), m = form.elements.email.value.trim();
     document.getElementById('consentError').classList.toggle('show', !c);
-    document.getElementById('requiredError').classList.toggle('show', !n);
-    return c && n;
+    document.getElementById('requiredError').classList.toggle('show', !(n && m));
+    return c && n && m;
   }
-  function finished() { document.getElementById('done').classList.add('show'); }
+  function finished() { loeschen(); merken.checked = false; document.getElementById('done').classList.add('show'); }
   var hint = document.getElementById('sendHint');
   function copyText(t, cb) {
     try { navigator.clipboard.writeText(t).then(function () { cb(true); }, function () { cb(false); }); } catch (e) { cb(false); }
@@ -568,16 +598,21 @@ var EINSTELLUNGEN = {
       if (ok) finished();
     });
   });
-  document.getElementById('sendWa').addEventListener('click', function () {
+  function senden(oeffnen) {
     if (!check()) return;
-    var full = build().full, nr = EINSTELLUNGEN.whatsapp.replace(/\D/g, '');
-    var base = nr ? 'https://wa.me/' + nr : 'https://wa.me/';
-    if (full.length < 1800) { location.href = base + '?text=' + encodeURIComponent(full); finished(); return; }
-    copyText(full, function (ok) {
-      hint.textContent = ok ? 'Ihre Antworten sind kopiert. WhatsApp öffnet sich gleich, fügen Sie den Text dort einfach ein.' : 'Bitte kopieren Sie die Zusammenfassung und senden Sie sie per WhatsApp.';
-      if (ok) { finished(); setTimeout(function () { location.href = base + '?text=' + encodeURIComponent('Hallo, hier meine Antworten zum Website-Fragebogen:'); }, 900); }
+    copyText(build().full, function (ok) {
+      hint.textContent = ok ? 'Ihre Antworten sind kopiert. Fügen Sie den Text gleich einfach ein und senden Sie ihn ab.' : 'Kopieren ging nicht automatisch. Bitte markieren Sie die Zusammenfassung oben und kopieren Sie sie.';
+      if (ok) { finished(); setTimeout(oeffnen, 900); }
     });
+  }
+  document.getElementById('sendWa').addEventListener('click', function () {
+    var nr = EINSTELLUNGEN.whatsapp.replace(/\D/g, '');
+    senden(function () { location.href = 'https://wa.me/' + nr + '?text=' + encodeURIComponent('Hallo, hier meine Antworten zum Website-Fragebogen:'); });
   });
+  document.getElementById('sendMail').addEventListener('click', function () {
+    senden(function () { location.href = 'mailto:' + EINSTELLUNGEN.email + '?subject=' + encodeURIComponent('Fragebogen Website: ' + form.elements.name.value.trim()) + '&body=' + encodeURIComponent('Hier meine Antworten (bitte einfügen):\n\n'); });
+  });
+  document.getElementById('loeschen').addEventListener('click', function () { loeschen(); form.reset(); location.reload(); });
 
   show(load());
 })();

@@ -1,0 +1,226 @@
+{
+  "seite": {
+    "domain": "maler-brueck.example",
+    "erstellt_von": "Website-Baukasten (Demo)",
+    "demo": true
+  },
+  "design": {
+    "thema": "hell",
+    "farben": {
+      "brand": "#1d4ed8",
+      "accent": "#f59e0b"
+    }
+  },
+  "inhalt": {
+    "slogan": "Malerbetrieb in Köln-Brück",
+    "hero_titel": "Saubere Wände. <em>Pünktlich</em> fertig.",
+    "hero_text": "Innenanstrich, Tapezieren und Fassaden für Privatkunden und Hausverwaltungen im Kölner Osten. Meisterbetrieb, Festpreis-Angebot innerhalb von 48 Stunden.",
+    "fakten": [
+      [
+        "2008",
+        "Meisterbetrieb seit"
+      ],
+      [
+        "48 h",
+        "bis zum Angebot"
+      ],
+      [
+        "Festpreis",
+        "ohne Überraschung"
+      ],
+      [
+        "Sauber",
+        "Abdecken inklusive"
+      ]
+    ],
+    "leistungen_texte": {
+      "Innenanstrich": "Wände und Decken, inklusive Abdecken und Aufräumen.",
+      "Tapezieren": "Raufaser, Vlies und Designtapeten.",
+      "Fassade": "Reinigung, Ausbesserung und Anstrich.",
+      "Lackierarbeiten": "Türen, Fenster und Heizkörper.",
+      "Schimmelsanierung": "Ursache finden, sanieren, vorbeugen."
+    },
+    "vorteile": [
+      {
+        "icon": "haken",
+        "titel": "Festpreis",
+        "text": "Sie wissen vorher genau, was es kostet."
+      },
+      {
+        "icon": "zeit",
+        "titel": "Termintreu",
+        "text": "Wir sagen, wann wir kommen, und sind dann auch da."
+      },
+      {
+        "icon": "werkzeug",
+        "titel": "Sauber",
+        "text": "Abdecken, arbeiten, aufräumen. Sie merken nur das Ergebnis."
+      }
+    ],
+    "ueber_titel": "Handwerk aus dem <em>Kölner Osten.</em>",
+    "ueber_text": [
+      "Seit 2008 streichen, tapezieren und lackieren wir in Brück, Rath und Merheim.",
+      "Ein kleines Team, kurze Wege und ein Ansprechpartner von der Besichtigung bis zur Abnahme."
+    ],
+    "zitat": "",
+    "faq": [
+      [
+        "Wie schnell bekomme ich ein Angebot?",
+        "Nach der Besichtigung innerhalb von 48 Stunden, als Festpreis."
+      ],
+      [
+        "Arbeiten Sie auch für Hausverwaltungen?",
+        "Ja, regelmäßig für mehrere Verwaltungen im Kölner Osten."
+      ]
+    ],
+    "cta_titel": "Kostenlose Besichtigung <em>anfragen</em>",
+    "cta_text": "Rufen Sie an oder schreiben Sie uns, wir melden uns am selben Tag.",
+    "seo_titel": "Malerbetrieb Brück · Maler in Köln-Brück · Festpreis-Angebot in 48 h",
+    "seo_beschreibung": "Meisterbetrieb in Köln-Brück: Innenanstrich, Tapezieren und Fassade zum Festpreis.",
+    "leistungen_intro": "Für Privatkunden und Hausverwaltungen, immer mit Festpreis-Angebot."
+  },
+  "fragebogen": {
+    "v": 1,
+    "pakete": [
+      "Website",
+      "Google-Unternehmensprofil"
+    ],
+    "betrieb": {
+      "name": "Malerbetrieb Brück",
+      "branche": "Handwerk",
+      "seit": "2008",
+      "ansprechpartner": "Kemal",
+      "strasse": "Musterallee 12",
+      "plz": "51109",
+      "ort": "Köln-Brück",
+      "telefon": "0221 4710 125",
+      "whatsapp": "0171 3920013",
+      "email": "info@maler-brueck.example",
+      "instagram": "",
+      "facebook": "",
+      "google": "",
+      "altseite": ""
+    },
+    "zeiten": [
+      {
+        "tag": "Montag",
+        "zeit": "07:00–16:30"
+      },
+      {
+        "tag": "Dienstag",
+        "zeit": "07:00–16:30"
+      },
+      {
+        "tag": "Mittwoch",
+        "zeit": "07:00–16:30"
+      },
+      {
+        "tag": "Donnerstag",
+        "zeit": "07:00–16:30"
+      },
+      {
+        "tag": "Freitag",
+        "zeit": "07:00–14:00"
+      },
+      {
+        "tag": "Samstag",
+        "zeit": "geschlossen"
+      },
+      {
+        "tag": "Sonntag",
+        "zeit": "geschlossen"
+      }
+    ],
+    "zeitenHinweis": "Besichtigungen nach Vereinbarung, auch samstags.",
+    "leistungen": [
+      {
+        "leistung": "Innenanstrich",
+        "dauer": "",
+        "preis": ""
+      },
+      {
+        "leistung": "Tapezieren",
+        "dauer": "",
+        "preis": ""
+      },
+      {
+        "leistung": "Fassade",
+        "dauer": "",
+        "preis": ""
+      },
+      {
+        "leistung": "Lackierarbeiten",
+        "dauer": "",
+        "preis": ""
+      },
+      {
+        "leistung": "Schimmelsanierung",
+        "dauer": "",
+        "preis": ""
+      }
+    ],
+    "preiseZeigen": "Nein",
+    "zahlung": [
+      "Bar",
+      "EC-Karte",
+      "Apple / Google Pay"
+    ],
+    "texte": {
+      "beschreibung": "Kleiner Barbershop in Nippes mit drei Stühlen.",
+      "besonders": "Keine Wartezeit mit Termin, saubere Fades, Nachschnitt-Garantie.",
+      "geschichte": ""
+    },
+    "zielgruppe": [
+      "Junge Leute",
+      "Familien",
+      "Stammkunden aus dem Viertel"
+    ],
+    "sprachen": "Deutsch, Türkisch, Englisch",
+    "team": [
+      {
+        "name": "Thomas",
+        "rolle": "Malermeister"
+      },
+      {
+        "name": "Selin",
+        "rolle": "Büro und Termine"
+      }
+    ],
+    "stil": {
+      "stimmung": [
+        "Dunkel und stylisch",
+        "Kölsch und lokal"
+      ],
+      "farbenVorhanden": "Nein, bitte vorschlagen",
+      "farben": [],
+      "vorbilder": "",
+      "nogo": ""
+    },
+    "funktionen": {
+      "termin": [
+        "Per Anruf",
+        "Per WhatsApp"
+      ],
+      "buchungstool": "",
+      "inhalte": [
+        "Fotogalerie",
+        "Häufige Fragen"
+      ],
+      "domain": "veedel-cut.example",
+      "mailWunsch": "Ja"
+    },
+    "fotos": "Bitte vor Ort Fotos machen",
+    "logo": "Nicht vorhanden",
+    "impressum": {
+      "inhaber": "",
+      "rechtsform": "Einzelunternehmen",
+      "ustid": "",
+      "register": "",
+      "kammer": "Handwerkskammer zu Köln",
+      "reglementiert": "Ja",
+      "berufsbez": "Maler- und Lackierermeister"
+    },
+    "wunschtermin": "",
+    "sonstiges": ""
+  }
+}

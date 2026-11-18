@@ -1,0 +1,224 @@
+{
+  "seite": {
+    "domain": "kaffeekiesel.example",
+    "erstellt_von": "Website-Baukasten (Demo)",
+    "demo": true
+  },
+  "design": {
+    "thema": "edel",
+    "farben": {
+      "brand": "#6b3f24",
+      "accent": "#b08d57"
+    }
+  },
+  "inhalt": {
+    "slogan": "Café & Rösterei in Köln-Ehrenfeld",
+    "hero_titel": "Kaffee, der nach <em>Zuhause</em> schmeckt.",
+    "hero_text": "Eigene Röstung, hausgemachter Kuchen und ein Platz am Fenster. Mitten in Ehrenfeld, seit 2016.",
+    "fakten": [
+      [
+        "2016",
+        "in Ehrenfeld zu Hause"
+      ],
+      [
+        "12",
+        "Plätze drinnen"
+      ],
+      [
+        "Vegan",
+        "Kuchen jeden Tag"
+      ],
+      [
+        "7 Tage",
+        "die Woche geöffnet"
+      ]
+    ],
+    "leistungen_texte": {
+      "Filterkaffee": "Täglich wechselnde Bohne aus eigener Röstung.",
+      "Cappuccino": "Mit Hafer- oder Vollmilch.",
+      "Kuchen des Tages": "Hausgemacht, auch vegan.",
+      "Frühstück Ehrenfeld": "Brot vom Bäcker nebenan, Käse, Ei, Marmelade.",
+      "Bohnen 250 g": "Zum Mitnehmen, frisch geröstet."
+    },
+    "vorteile": [
+      {
+        "icon": "kaffee",
+        "titel": "Selbst geröstet",
+        "text": "Jede Woche frisch, im Laden, in kleinen Mengen."
+      },
+      {
+        "icon": "herz",
+        "titel": "Alles hausgemacht",
+        "text": "Kuchen und Granola backen wir jeden Morgen selbst."
+      },
+      {
+        "icon": "familie",
+        "titel": "Kinder willkommen",
+        "text": "Spielecke, Hochstuhl und Kakao mit Sahne."
+      }
+    ],
+    "ueber_titel": "Ein kleines Café mit <em>großer</em> Liebe zum Detail.",
+    "ueber_text": [
+      "Wir haben den Kaffeekiesel eröffnet, weil uns in Ehrenfeld ein ruhiger Ort fehlte, an dem der Kaffee wirklich gut ist.",
+      "Heute rösten wir selbst, backen jeden Morgen und freuen uns über jeden Stammgast."
+    ],
+    "zitat": "Guter Kaffee braucht Zeit. Du auch.",
+    "faq": [
+      [
+        "Kann ich reservieren?",
+        "Für Gruppen ab 6 Personen gern per Telefon."
+      ],
+      [
+        "Gibt es vegane Optionen?",
+        "Ja, täglich mindestens ein veganer Kuchen und Hafermilch ohne Aufpreis."
+      ]
+    ],
+    "cta_titel": "Komm auf einen <em>Kaffee</em> vorbei.",
+    "cta_text": "Ohne Reservierung, einfach reinkommen.",
+    "seo_titel": "Kaffeekiesel · Café & Rösterei in Köln-Ehrenfeld",
+    "seo_beschreibung": "Café in Köln-Ehrenfeld mit eigener Röstung, hausgemachtem Kuchen und Frühstück.",
+    "leistungen_intro": "Alles aus eigener Röstung und eigener Küche."
+  },
+  "fragebogen": {
+    "v": 1,
+    "pakete": [
+      "Website",
+      "Google-Unternehmensprofil"
+    ],
+    "betrieb": {
+      "name": "Kaffeekiesel",
+      "branche": "Café / Restaurant",
+      "seit": "2016",
+      "ansprechpartner": "Kemal",
+      "strasse": "Beispielweg 7",
+      "plz": "50823",
+      "ort": "Köln-Ehrenfeld",
+      "telefon": "0221 4710 124",
+      "whatsapp": "",
+      "email": "hallo@kaffeekiesel.example",
+      "instagram": "@kaffeekiesel.demo",
+      "facebook": "",
+      "google": "",
+      "altseite": ""
+    },
+    "zeiten": [
+      {
+        "tag": "Montag",
+        "zeit": "08:00–18:00"
+      },
+      {
+        "tag": "Dienstag",
+        "zeit": "08:00–18:00"
+      },
+      {
+        "tag": "Mittwoch",
+        "zeit": "08:00–18:00"
+      },
+      {
+        "tag": "Donnerstag",
+        "zeit": "08:00–18:00"
+      },
+      {
+        "tag": "Freitag",
+        "zeit": "08:00–18:00"
+      },
+      {
+        "tag": "Samstag",
+        "zeit": "09:00–18:00"
+      },
+      {
+        "tag": "Sonntag",
+        "zeit": "10:00–17:00"
+      }
+    ],
+    "zeitenHinweis": "Frühstück bis 13 Uhr.",
+    "leistungen": [
+      {
+        "leistung": "Filterkaffee",
+        "dauer": "",
+        "preis": "3,20"
+      },
+      {
+        "leistung": "Cappuccino",
+        "dauer": "",
+        "preis": "3,90"
+      },
+      {
+        "leistung": "Kuchen des Tages",
+        "dauer": "",
+        "preis": "4,50"
+      },
+      {
+        "leistung": "Frühstück Ehrenfeld",
+        "dauer": "",
+        "preis": "12,90"
+      },
+      {
+        "leistung": "Bohnen 250 g",
+        "dauer": "",
+        "preis": "9,50"
+      }
+    ],
+    "preiseZeigen": "Ja, alle",
+    "zahlung": [
+      "Bar",
+      "EC-Karte",
+      "Apple / Google Pay"
+    ],
+    "texte": {
+      "beschreibung": "Kleiner Barbershop in Nippes mit drei Stühlen.",
+      "besonders": "Keine Wartezeit mit Termin, saubere Fades, Nachschnitt-Garantie.",
+      "geschichte": ""
+    },
+    "zielgruppe": [
+      "Junge Leute",
+      "Familien",
+      "Stammkunden aus dem Viertel"
+    ],
+    "sprachen": "Deutsch, Türkisch, Englisch",
+    "team": [
+      {
+        "name": "Anna",
+        "rolle": "Rösterin"
+      },
+      {
+        "name": "Yusuf",
+        "rolle": "Küche und Kuchen"
+      }
+    ],
+    "stil": {
+      "stimmung": [
+        "Dunkel und stylisch",
+        "Kölsch und lokal"
+      ],
+      "farbenVorhanden": "Nein, bitte vorschlagen",
+      "farben": [],
+      "vorbilder": "",
+      "nogo": ""
+    },
+    "funktionen": {
+      "termin": [
+        "Per Anruf"
+      ],
+      "buchungstool": "",
+      "inhalte": [
+        "Preisliste / Speisekarte",
+        "Häufige Fragen",
+        "Fotogalerie"
+      ],
+      "domain": "veedel-cut.example",
+      "mailWunsch": "Ja"
+    },
+    "fotos": "Bitte vor Ort Fotos machen",
+    "logo": "Nicht vorhanden",
+    "impressum": {
+      "inhaber": "",
+      "rechtsform": "Einzelunternehmen",
+      "ustid": "",
+      "register": "",
+      "kammer": ""
+    },
+    "wunschtermin": "",
+    "sonstiges": ""
+  }
+}

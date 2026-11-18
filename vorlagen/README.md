@@ -1,5 +1,7 @@
 # Vorlagen
 
+> **Achtung Datenschutz:** Die HTML5-UP-Vorlagen laden Schriften direkt von Google (fonts.googleapis.com). Das hat 2022 zu einer Abmahnwelle geführt (LG München I, 3 O 17493/20). Für Kunden deshalb den **Website-Baukasten** (`../baukasten/`) nutzen. HTML5 UP nur verwenden, wenn die Schriften vorher lokal eingebunden wurden.
+
 Startpunkte für Kunden-Websites.
 
 ## Eigene Vorlage
